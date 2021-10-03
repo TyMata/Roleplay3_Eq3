@@ -39,7 +39,25 @@ namespace Roleplay_Prog.Library
                 }
             }
         }
-       
+       protected int vp;
+       public int VP
+       {
+            get
+            {
+                return this.vp;
+            }
+            set
+            {
+                if(value >=0)
+                {
+                    this.vp = value;
+                }
+                else
+                {
+                    this.vp = 0;
+                }
+            }
+        }
         public ItemDefensa ItemDef{get;set;}
 
         protected Character(string name)
@@ -57,7 +75,5 @@ namespace Roleplay_Prog.Library
         {
             this.ItemDef = null;
         }
-
-        
     }
 }

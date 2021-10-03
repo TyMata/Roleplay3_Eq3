@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Roleplay_Prog.Library
 {
-    public class Orco : CharacterNoMagico
+    public class Orco : HeroeNoMagico
     {
 
         public Orco(string nombre) : base(nombre)

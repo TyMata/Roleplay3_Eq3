@@ -2,7 +2,7 @@ using System;
 
 namespace Roleplay_Prog.Library
 {
-    public class Enano : CharacterNoMagico
+    public class Enano : HeroeNoMagico
     {
         public Enano(string nombre) : base(nombre)
         {

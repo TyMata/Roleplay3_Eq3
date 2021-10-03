@@ -1,10 +1,10 @@
+using System.Collections.Generic;
 using System;
 
 namespace Roleplay_Prog.Library
 {
-    public class CharacterNoMagico : Character
-    {
-        public ItemAtaque ItemOf{get;set;}
+    public class Enemy : Character
+    {public ItemAtaque ItemOf{get;set;}
 
         public void CambiarItemOf(ItemAtaque cuchillo)
         {
@@ -30,7 +30,7 @@ namespace Roleplay_Prog.Library
             }
         }
 
-        protected CharacterNoMagico(string nombre): base (nombre)
+        protected Enemy(string nombre): base (nombre)
         {
         }
     }

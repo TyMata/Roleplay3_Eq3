@@ -1,13 +1,12 @@
 using System;
-using System.Collections.Generic;
 
 namespace Roleplay_Prog.Library
 {
-    public class CharacterMagico : Character
+    public class HeroeNoMagico : Character
     {
-        public LibroHechizos ItemOf{get;set;}
+        public ItemAtaque ItemOf{get;set;}
 
-        public void CambiarItemOf(LibroHechizos cuchillo)
+        public void CambiarItemOf(ItemAtaque cuchillo)
         {
             this.ItemOf = cuchillo;
         }
@@ -19,7 +18,7 @@ namespace Roleplay_Prog.Library
 
         public int GetAtaque()
         {
-            return this.ItemOf.GetAtaque();
+            return this.ItemOf.Ataque;
         }
 
         public void Atacar(Character chara)
@@ -30,9 +29,10 @@ namespace Roleplay_Prog.Library
                 chara.Vida -= danio;
             }
         }
-        protected CharacterMagico(string nombre): base (nombre)
+
+        protected HeroeNoMagico(string nombre): base (nombre)
         {
-            
+            this.VP = 0;
         }
     }
 }
