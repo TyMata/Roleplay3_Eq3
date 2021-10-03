@@ -7,7 +7,7 @@ namespace Test.Library
 {
 
 
-    public class WizardTest
+    public class CharacterMagicoTest
     {
         private Wizard wizard;
         private Character dummy;
@@ -24,46 +24,6 @@ namespace Test.Library
 
             this.dummy = new Wizard("Jose");
 
-        }
-        /*
-            Es necesario probar la asignacion de un nombre valido para
-            poder confirmar que el setter funciona correctamente
-        */
-        [Test]
-        public void NombreValidoTest()
-        {
-            this.wizard.Nombre= "Mata";
-            Assert.AreEqual(this.wizard.Nombre, "Mata");
-        }
-        /*
-            Es necesario probar la asignacion de un nombre invalido para
-            poder confirmar que el setter funciona correctamente
-        */
-        [Test]
-        public void NombreInvalidoTest()
-        {
-            this.wizard.Nombre= "";
-            Assert.AreEqual(this.wizard.Nombre, "Joseph");
-        }
-        /*
-            Es necesario probar la asignacion de un valor de vida valido para
-            poder confirmar que el setter funciona correctamente
-        */
-        [Test]
-        public void VidaValidaTest()
-        {
-            this.wizard.Vida= 100;
-            Assert.AreEqual(this.wizard.Vida, 100);
-        }
-        /*
-            Es necesario probar la asignacion de un valor de vida invalido para
-            poder confirmar que el setter funciona correctamente
-        */
-        [Test]
-        public void VidaInvalidaTest()
-        {
-            this.wizard.Vida= -50;
-            Assert.AreEqual(this.wizard.Vida, 0);
         }
         /*
             Es necesario probar este metodo para confirmar que
@@ -96,27 +56,6 @@ namespace Test.Library
         {
             this.wizard.QuitarItemOf();
             Assert.AreEqual(this.wizard.ItemOf, null);
-        }
-        /*
-            Es necesario probar este metodo para confirmar que
-            al realizar un cambio de ItemDef se realiza el cambio correctamente
-        */
-         [Test]
-        public void CambiarItemDefTest()
-        {
-            TunicaCuero tunicaCueroNu = new TunicaCuero(50);
-            this.wizard.CambiarItemDef(tunicaCueroNu);
-            Assert.AreEqual(this.wizard.ItemDef, tunicaCueroNu);
-        }
-        /*
-            Es necesario probar este metodo para confirmar que
-            al quitar el ItemDef este queda en null
-        */
-        [Test]
-        public void QuitarItemDefTest()
-        {
-            this.wizard.QuitarItemDef();
-            Assert.AreEqual(this.wizard.ItemDef, null);
         }
         /*
             Es necesario probar este metodo para confirmar que
@@ -161,16 +100,6 @@ namespace Test.Library
             this.wizard.CambiarItemOf(libroHechizosSuperior);
             this.wizard.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 0);
-        }
-        /*
-            Es necesario probar este metodo para confirmar que al curarse queda con la misma vida inicial.
-        */
-        [Test]
-        public void CurarseTest()
-        {
-            this.wizard.Vida = 20;
-            this.wizard.Curarse();
-            Assert.AreEqual(this.wizard.Vida, 80);
         }
     }
 }

@@ -2,9 +2,10 @@ using System;
 
 namespace Roleplay_Prog.Library
 {
-    public class Spell : IItemAtaque, IItemDefensa
+    public class Spell : IItemMagico
     {
         private int ataque;
+
         public int Ataque
         {
             get
@@ -20,10 +21,12 @@ namespace Roleplay_Prog.Library
                 else
                 {
                     this.ataque = 0;
-                }
+                } 
             }
         }
+
         private int defensa;
+
         public int Defensa
         {
             get
@@ -42,10 +45,11 @@ namespace Roleplay_Prog.Library
                 } 
             }
         }
-        public Spell(int aAtaque, int aDefensa)
-        {
-            ataque = aAtaque;
-            defensa = aDefensa;
+
+        public Spell(int ataque, int defensa)
+        { 
+            this.Ataque = ataque;
+            this.Defensa = defensa;
         }
     }
 }

@@ -2,30 +2,10 @@ using System;
 
 namespace Roleplay_Prog.Library
 {
-    public class TunicaCuero : IItemDefensa
+    public class TunicaCuero : ItemDefensa
     {
-        private int defensa;
-        public int Defensa
+        public TunicaCuero(int defensa) : base (defensa)
         {
-            get
-            {
-                return this.defensa;
-            }
-            set
-            {
-                if(value >=0)
-                {
-                    this.defensa = value;
-                }
-                else
-                {
-                    this.defensa = 0;
-                } 
-            }
-        }
-        public TunicaCuero(int aDefensa)
-        {
-            this.Defensa = aDefensa;
         }
     }
 }

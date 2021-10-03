@@ -2,57 +2,24 @@ using System.Collections.Generic;
 
 namespace Roleplay_Prog.Library
 {
-    public class LibroHechizos : IItemAtaque, IItemDefensa
+    public class LibroHechizos : IItemMagico
     {
         public List<Spell> Spells = new List<Spell>();
-        private int ataque;
-        public int Ataque
+
+        public int GetAtaque()
         {
-            get
+            int value = 0;
+            foreach (Spell item in Spells)
             {
-                int value = 0;
-                foreach (Spell spell in this.Spells)
-                {
-                    value += spell.Ataque;
-                }
-                return value;
+                value = item.Ataque;
             }
-            set
-            {
-                if(value >= 0)
-                {
-                    this.ataque = value;
-                }
-                else
-                {
-                    this.ataque = 0;
-                }
-            }
+
+            return value;
         }
-        private int defensa;
-        public int Defensa
+        public LibroHechizos()
         {
-            get
-            {
-                int value = 0;
-                foreach (Spell spell in this.Spells)
-                {
-                    value += spell.Defensa;
-                }
-                return value;
-            }
-            set
-            {
-                if(value >=0)
-                {
-                    this.defensa = value;
-                }
-                else
-                {
-                    this.defensa = 0;
-                }
-            }
         }
+
         public void AniadirSpell(Spell spell)
         {
             this.Spells.Add(spell);
