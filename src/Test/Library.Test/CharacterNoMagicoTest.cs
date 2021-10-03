@@ -6,18 +6,18 @@ namespace Test.Library
 {
 
 
-    public class CharacterNoMagicoNoMagicoTest
+    public class HeroeNoMagicoNoMagicoTest
     {
-        private Elfo characternomagico;
-        private CharacterNoMagico dummy;
+        private Elfo HeroeNoMagico;
+        private HeroeNoMagico dummy;
         [SetUp]
         public void Setup()
         {
-            this.characternomagico = new Elfo("CharacterNoMagico1");
+            this.HeroeNoMagico = new Elfo("HeroeNoMagico1");
             Arco arco = new Arco(50);
-            this.characternomagico.CambiarItemOf(arco);
+            this.HeroeNoMagico.CambiarItemOf(arco);
             Armadura armadura = new Armadura(20);
-            this.characternomagico.CambiarItemDef(armadura);
+            this.HeroeNoMagico.CambiarItemDef(armadura);
             this.dummy = new Elfo("Jose");
         }
         /*
@@ -27,7 +27,7 @@ namespace Test.Library
         [Test]
         public void GetAtaqueTest()
         {
-            Assert.AreEqual(this.characternomagico.GetAtaque(), this.characternomagico.ItemOf.Ataque);
+            Assert.AreEqual(this.HeroeNoMagico.GetAtaque(), this.HeroeNoMagico.ItemOf.Ataque);
         }
         /*
             Es necesario probar este metodo para confirmar que
@@ -37,8 +37,8 @@ namespace Test.Library
         public void CambiarItemOfTest()
         {
             Arco arcoNue = new Arco(60);
-            this.characternomagico.CambiarItemOf(arcoNue);
-            Assert.AreEqual(this.characternomagico.GetAtaque(), arcoNue.Ataque);
+            this.HeroeNoMagico.CambiarItemOf(arcoNue);
+            Assert.AreEqual(this.HeroeNoMagico.GetAtaque(), arcoNue.Ataque);
         }
         /*
             Es necesario probar este metodo para confirmar que
@@ -47,8 +47,8 @@ namespace Test.Library
         [Test]
         public void QuitarItemOfTest()
         {
-            this.characternomagico.QuitarItemOf();
-            Assert.AreEqual(this.characternomagico.ItemOf, null);
+            this.HeroeNoMagico.QuitarItemOf();
+            Assert.AreEqual(this.HeroeNoMagico.ItemOf, null);
         }
         /*
             Es necesario probar este metodo para confirmar que
@@ -60,7 +60,7 @@ namespace Test.Library
         {
             ItemDefensa tunicaCuero = new TunicaCuero(60);
             this.dummy.CambiarItemDef(tunicaCuero);
-            this.characternomagico.Atacar(this.dummy);
+            this.HeroeNoMagico.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 100);
         }
         /*
@@ -73,7 +73,7 @@ namespace Test.Library
         {
             ItemDefensa tunicaCuero = new TunicaCuero(20);
             this.dummy.CambiarItemDef(tunicaCuero);
-            this.characternomagico.Atacar(this.dummy);
+            this.HeroeNoMagico.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 70);
         }
         /*
@@ -88,8 +88,8 @@ namespace Test.Library
             ItemDefensa tunicaCuero = new TunicaCuero(0);
             this.dummy.CambiarItemDef(tunicaCuero);
             ItemAtaque mazo2 = new Mazo(999);
-            this.characternomagico.CambiarItemOf(mazo2);
-            this.characternomagico.Atacar(this.dummy);
+            this.HeroeNoMagico.CambiarItemOf(mazo2);
+            this.HeroeNoMagico.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 0);
         }
     }

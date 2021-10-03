@@ -1,61 +1,74 @@
 using NUnit.Framework;
 using Roleplay_Prog;
 using Roleplay_Prog.Library;
-using System.Collections;
 
 namespace Test.Library
 {
 
 
-    public class HeroeMagicoTest
+    public class EnemyTest
     {
-        private Wizard wizard;
+        private Elfo elfo;
         private Character dummy;
         [SetUp]
         public void Setup()
         {
-            this.wizard = new Wizard("Joseph");
-            Spell spell = new Spell(50,0);
-            LibroHechizos libroHechizos = new LibroHechizos();
-            libroHechizos.Spells.Add(spell);
-            this.wizard.CambiarItemOf(libroHechizos);
-            TunicaCuero tunicaCuero = new TunicaCuero(30);
-            this.wizard.CambiarItemDef(tunicaCuero);
-
+            this.elfo = new Elfo("Elfo1");
+            Arco arco = new Arco(50);
+            this.elfo.CambiarItemOf(arco);
+            Armadura armadura = new Armadura(20);
+            this.elfo.CambiarItemDef(armadura);
             this.dummy = new Wizard("Jose");
-
+        }
+        /*
+            Es necesario probar la asignacion de un valor de vida valido para
+            poder confirmar que el setter funciona correctamente
+        */
+        [Test]
+        public void VidaValidaTest()
+        {
+            this.elfo.Vida= 30;
+            Assert.AreEqual(this.elfo.Vida, 30);
+        }
+        /*
+            Es necesario probar la asignacion de un valor de vida invalido para
+            poder confirmar que el setter funciona correctamente
+        */
+        [Test]
+        public void VidaInvalidaTest()
+        {
+            this.elfo.Vida= -60;
+            Assert.AreEqual(this.elfo.Vida, 0);
         }
         /*
             Es necesario probar este metodo para confirmar que
-            el ataque que devuelve es el mismo ataque que el de su LibroHechizos
+            el ataque que devuelve es el mismo ataque que el de su ItemOf
         */
         [Test]
         public void GetAtaqueTest()
         {
-            Assert.AreEqual(this.wizard.GetAtaque(), this.wizard.ItemOf.GetAtaque());
+            Assert.AreEqual(this.elfo.GetAtaque(), this.elfo.ItemOf.Ataque);
         }
         /*
             Es necesario probar este metodo para confirmar que
-            al realizar un cambio de LibroHechizos se realiza el cambio correctamente
+            al realizar un cambio de ItemOf se realiza el cambio correctamente
         */
         [Test]
-        public void CambiarLibroHechizosTest()
+        public void CambiarItemOfTest()
         {
-            Spell spellNu = new Spell(30, 0);
-            LibroHechizos libroHechizosNu = new LibroHechizos();
-            libroHechizosNu.Spells.Add(spellNu);
-            this.wizard.CambiarItemOf(libroHechizosNu);
-            Assert.AreEqual(this.wizard.GetAtaque(), libroHechizosNu.GetAtaque());
+            Arco arcoNue = new Arco(60);
+            this.elfo.CambiarItemOf(arcoNue);
+            Assert.AreEqual(this.elfo.GetAtaque(), arcoNue.Ataque);
         }
         /*
             Es necesario probar este metodo para confirmar que
-            al quitar el LibroHechizos este queda en null
+            al quitar el ItemOf este queda en null
         */
         [Test]
-        public void QuitarLibroHechizosTest()
+        public void QuitarItemOfTest()
         {
-            this.wizard.QuitarItemOf();
-            Assert.AreEqual(this.wizard.ItemOf, null);
+            this.elfo.QuitarItemOf();
+            Assert.AreEqual(this.elfo.ItemOf, null);
         }
         /*
             Es necesario probar este metodo para confirmar que
@@ -67,7 +80,7 @@ namespace Test.Library
         {
             ItemDefensa tunicaCuero = new TunicaCuero(60);
             this.dummy.CambiarItemDef(tunicaCuero);
-            this.wizard.Atacar(this.dummy);
+            this.elfo.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 80);
         }
         /*
@@ -80,7 +93,7 @@ namespace Test.Library
         {
             ItemDefensa tunicaCuero = new TunicaCuero(20);
             this.dummy.CambiarItemDef(tunicaCuero);
-            this.wizard.Atacar(this.dummy);
+            this.elfo.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 50);
         }
         /*
@@ -94,11 +107,9 @@ namespace Test.Library
         {
             ItemDefensa tunicaCuero = new TunicaCuero(0);
             this.dummy.CambiarItemDef(tunicaCuero);
-            Spell spellSuperior = new Spell(100,0);
-            LibroHechizos libroHechizosSuperior = new LibroHechizos();
-            libroHechizosSuperior.Spells.Add(spellSuperior);
-            this.wizard.CambiarItemOf(libroHechizosSuperior);
-            this.wizard.Atacar(this.dummy);
+            ItemAtaque mazo2 = new Mazo(80);
+            this.elfo.CambiarItemOf(mazo2);
+            this.elfo.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 0);
         }
     }
