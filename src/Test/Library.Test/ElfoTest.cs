@@ -9,7 +9,7 @@ namespace Test.Library
     public class ElfoTest
     {
         private Elfo elfo;
-        private ICharacter dummy;
+        private Character dummy;
         [SetUp]
         public void Setup()
         {
@@ -119,7 +119,7 @@ namespace Test.Library
         [Test]
         public void DanioAtacarMenorOIgualQueArmaduraTest()
         {
-            IItemDefensa tunicaCuero = new TunicaCuero(60);
+            ItemDefensa tunicaCuero = new TunicaCuero(60);
             this.dummy.CambiarItemDef(tunicaCuero);
             this.elfo.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 80);
@@ -132,7 +132,7 @@ namespace Test.Library
         [Test]
         public void DanioAtacarMayorQueArmaduraTest()
         {
-            IItemDefensa tunicaCuero = new TunicaCuero(20);
+            ItemDefensa tunicaCuero = new TunicaCuero(20);
             this.dummy.CambiarItemDef(tunicaCuero);
             this.elfo.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 50);
@@ -146,9 +146,9 @@ namespace Test.Library
         [Test]
         public void DanioAtacarMayorQueArmaduraYVidaTest()
         {
-            IItemDefensa tunicaCuero = new TunicaCuero(0);
+            ItemDefensa tunicaCuero = new TunicaCuero(0);
             this.dummy.CambiarItemDef(tunicaCuero);
-            IItemAtaque mazo2 = new Mazo(80);
+            ItemAtaque mazo2 = new Mazo(80);
             this.elfo.CambiarItemOf(mazo2);
             this.elfo.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 0);
@@ -161,7 +161,7 @@ namespace Test.Library
         {
             this.elfo.Vida = 20;
             this.elfo.Curarse();
-            Assert.AreEqual(this.elfo.Vida, 90);
+            Assert.AreEqual(this.elfo.Vida, 100);
         }
     }
 

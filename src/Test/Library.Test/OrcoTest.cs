@@ -9,7 +9,7 @@ namespace Test.Library
     public class OrcoTest
     {
         private Orco orco;
-        private ICharacter dummy;
+        private Character dummy;
         [SetUp]
         public void Setup()
         {
@@ -120,7 +120,7 @@ namespace Test.Library
         [Test]
         public void DanioAtacarMenorOIgualQueArmaduraTest()
         {
-            IItemDefensa tunicaCuero = new TunicaCuero(60);
+            ItemDefensa tunicaCuero = new TunicaCuero(60);
             this.dummy.CambiarItemDef(tunicaCuero);
             this.orco.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 80);
@@ -133,7 +133,7 @@ namespace Test.Library
         [Test]
         public void DanioAtacarMayorQueArmaduraTest()
         {
-            IItemDefensa tunicaCuero = new TunicaCuero(20);
+            ItemDefensa tunicaCuero = new TunicaCuero(20);
             this.dummy.CambiarItemDef(tunicaCuero);
             this.orco.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 50);
@@ -147,9 +147,9 @@ namespace Test.Library
         [Test]
         public void DanioAtacarMayorQueArmaduraYVidaTest()
         {
-            IItemDefensa tunicaCuero = new TunicaCuero(0);
+            ItemDefensa tunicaCuero = new TunicaCuero(0);
             this.dummy.CambiarItemDef(tunicaCuero);
-            IItemAtaque mazo2 = new Mazo(80);
+            ItemAtaque mazo2 = new Mazo(80);
             this.orco.CambiarItemOf(mazo2);
             this.orco.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 0);
