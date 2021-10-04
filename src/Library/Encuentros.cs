@@ -13,26 +13,42 @@ namespace Roleplay_Prog.Library
             this.heroes = listaHeroes;
             this.enemigos = listaEnemigos;
         }
-        
+        public bool IsEnemyDead(Enemy enemigo)
+        {
+            return enemigo.Vida == 0;
+        }
         public bool DoEnconter()
         {
             int h = 0;
-            while (this.enemigos.Count > 0 && this.heroes.Count > 0)
+            int loops = 0;
+            List<int> eliminados = new List<int>();
+            while (this.enemigos.Count > 0 && this.enemigos.Count > 0)
             {
                 for (int i = 0; i < this.enemigos.Count - 1; i++) //Inicia ataque de los enemigos
                 {
                     if (this.enemigos.Count <= this.heroes.Count)
                     {
                         this.enemigos[i].Atacar(this.heroes[i]);
+                        if (this.heroes[i].Vida==0) eliminados.Add(i);
                     }
                     else
                     {
                         if(i > this.heroes.Count - 1)
                         {
-                            h = i - this.heroes.Count;
-                            while(h > this.heroes.Count)
+                            h = i - this.heroes.Count - 1;
+                            while(h > this.heroes.Count - 1)
                             {
                                 h = h - this.heroes.Count;
+                            }
+                            if(h < 0) h = 0;
+                            while (this.heroes[h].Vida == 0 && loops <2)
+                            {
+                                h++;
+                                if(h > this.heroes.Count - 1)
+                                {
+                                    h = 0;
+                                    loops++;
+                                }
                             }
                             this.enemigos[i].Atacar(this.heroes[h]);
                         }
@@ -40,21 +56,20 @@ namespace Roleplay_Prog.Library
                         {
                             this.enemigos[i].Atacar(this.heroes[i]);
                         }
-                        if(i % this.heroes.Count-1 == 0)
-                        {
-                            foreach (var heroe in this.heroes)
-                            {
-                                if (heroe.Vida == 0)
-                                {
-                                    heroes.Remove(heroe);
-                                }
-                            }
-                        }
                     }
                 }                                       //Termina ataque de los enemigos
                 
-                
-                foreach (var heroe in this.heroes) //Comienza ataque de los heroes
+                foreach (var heroe in this.heroes)                  //Comienza eliminacion de heroes
+                {
+                    if (heroe.Vida == 0) eliminados.Add(this.heroes.IndexOf(heroe));
+                }                           
+                foreach (var index in eliminados)
+                {
+                    this.heroes.RemoveAt(index);
+                }
+                eliminados.Clear();                       //Termina eliminacion de hereoes
+                                                
+                foreach (var heroe in this.heroes)                  //Comienza ataque de los heroes
                 {
                     if (heroe.Vida != 0)
                     {
@@ -75,12 +90,9 @@ namespace Roleplay_Prog.Library
                                 }
                             }
                         }
-                        foreach (var enemigo in this.enemigos)
-                        {
-                            if(enemigo.Vida == 0) enemigos.Remove(enemigo);
-                        }
                     }
-                }                                   //Termina ataque de los heroes
+                }                                   //Termina ataque de los heroes                     
+                this.enemigos.RemoveAll(IsEnemyDead);
             }
 
             if (this.enemigos.Count == 0)

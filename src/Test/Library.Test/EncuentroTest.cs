@@ -19,7 +19,7 @@ namespace Test.Library
 
         private List <IHeroes> listaHeroes = new List<IHeroes>();
         private List <Enemy> listaEnemy1 = new List<Enemy>();
-        private List <Enemy> listaEnemy3 = new List<Enemy>();
+        private List <Enemy> listaEnemy2 = new List<Enemy>();
         private List <Enemy> listaEnemy5 = new List<Enemy>();
         [SetUp]
         public void SetUp()
@@ -28,9 +28,8 @@ namespace Test.Library
             this.listaHeroes.Add(this.elfo1);
 
             this.listaEnemy1.Add(this.esqueleto1);
-            this.listaEnemy3.Add(this.esqueleto1);
-            this.listaEnemy3.Add(this.esqueleto2);
-            this.listaEnemy3.Add(this.esqueleto3);
+            this.listaEnemy2.Add(this.esqueleto1);
+            this.listaEnemy2.Add(this.esqueleto2);
             this.listaEnemy5.Add(this.esqueleto1);
             this.listaEnemy5.Add(this.esqueleto2);
             this.listaEnemy5.Add(this.esqueleto3);
@@ -61,6 +60,18 @@ namespace Test.Library
         public void MayorNumeroEnemigosTest()
         {
             Encuentros encuentro = new Encuentros(this.listaHeroes, this.listaEnemy5);
+            Assert.IsTrue(encuentro.DoEnconter());
+        }
+        [Test]
+        public void IgualNumeroEnemigosTest()
+        {
+            Encuentros encuentro = new Encuentros(this.listaHeroes, this.listaEnemy2);
+            Assert.IsTrue(encuentro.DoEnconter());
+        }
+        [Test]
+        public void MenorNumeroEnemigosTest()
+        {
+            Encuentros encuentro = new Encuentros(this.listaHeroes, this.listaEnemy1);
             Assert.IsTrue(encuentro.DoEnconter());
         }
     }
