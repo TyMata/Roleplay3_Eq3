@@ -21,7 +21,7 @@ namespace Roleplay_Prog.Library
             return this.ItemOf.Ataque;
         }
 
-        public void Atacar(Character chara)
+        public void Atacar(IHeroes chara)
         {
             if(chara.ItemDef.Defensa < this.GetAtaque() )
             {

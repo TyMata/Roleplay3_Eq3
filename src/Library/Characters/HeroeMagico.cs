@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Roleplay_Prog.Library
 {
-    public class HeroeMagico : Character
+    public abstract class HeroeMagico : Character, IHeroes
     {
         public LibroHechizos ItemOf{get;set;}
 
@@ -30,6 +30,7 @@ namespace Roleplay_Prog.Library
                 chara.Vida -= danio;
             }
         }
+        public abstract void Curarse();
         protected HeroeMagico(string nombre): base (nombre)
         {
            this.VP = 0;
