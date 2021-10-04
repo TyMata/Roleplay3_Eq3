@@ -17,9 +17,9 @@ namespace Roleplay_Prog.Library
         public void DoEnconter()
         {
             int h = 0;
-            while (this.enemigos.Count > 0 && this.enemigos.Count > 0)
+            while (this.enemigos.Count > 0 && this.heroes.Count > 0)
             {
-                for (int i = 0; i < this.enemigos.Count; i++) //Inicia ataque de los enemigos
+                for (int i = 0; i < this.enemigos.Count - 1; i++) //Inicia ataque de los enemigos
                 {
                     if (this.enemigos.Count <= this.heroes.Count)
                     {
@@ -27,7 +27,7 @@ namespace Roleplay_Prog.Library
                     }
                     else
                     {
-                        if(i > this.heroes.Count)
+                        if(i > this.heroes.Count - 1)
                         {
                             h = i - this.heroes.Count;
                             while(h > this.heroes.Count)
@@ -40,7 +40,7 @@ namespace Roleplay_Prog.Library
                         {
                             this.enemigos[i].Atacar(this.heroes[i]);
                         }
-                        if(i % this.heroes.Count == 0)
+                        if(i % this.heroes.Count-1 == 0)
                         {
                             foreach (var heroe in this.heroes)
                             {
@@ -74,6 +74,9 @@ namespace Roleplay_Prog.Library
                                     heroe.VP = heroe.VP - 5;
                                 }
                             }
+                        }
+                        foreach (var enemigo in this.enemigos)
+                        {
                             if(enemigo.Vida == 0) enemigos.Remove(enemigo);
                         }
                     }
