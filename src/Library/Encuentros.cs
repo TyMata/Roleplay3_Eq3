@@ -13,7 +13,7 @@ namespace Roleplay_Prog.Library
             this.heroes = listaHeroes;
             this.enemigos = listaEnemigos;
         }
-
+        
         public bool DoEnconter()
         {
             int h = 0;
