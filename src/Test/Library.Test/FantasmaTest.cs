@@ -8,11 +8,11 @@ namespace Test.Library
 
     public class FantasmaTest
     {
-        private Fantasma Fantasma;
+        private Fantasma fantasma;
         [SetUp]
         public void Setup()
         {
-            this.Fantasma = new Fantasma("Aurelio");
+            this.fantasma = new Fantasma("Aurelio");
         }
         /*
             Es necesario probar la asignacion de un valor de vida valido para
@@ -21,8 +21,8 @@ namespace Test.Library
         [Test]
         public void VidaValidaTest()
         {
-            this.rata.Vida= 100;
-            Assert.AreEqual(this.Fantasma.Vida, 100);
+            this.fantasma.Vida= 100;
+            Assert.AreEqual(this.fantasma.Vida, 100);
         }
         /*
             Es necesario probar la asignacion de un valor de vida invalido para
@@ -31,8 +31,8 @@ namespace Test.Library
         [Test]
         public void VidaInvalidaTest()
         {
-            this.Fantasma.Vida= -40;
-            Assert.AreEqual(this.Fantasma.Vida, 0);
+            this.fantasma.Vida= -40;
+            Assert.AreEqual(this.fantasma.Vida, 0);
         }
     }
 }
