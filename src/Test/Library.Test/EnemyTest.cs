@@ -8,37 +8,17 @@ namespace Test.Library
 
     public class EnemyTest
     {
-        private Elfo elfo;
-        private Character dummy;
+        private Esqueleto esqueleto;
+        private Wizard dummy;
         [SetUp]
         public void Setup()
         {
-            this.elfo = new Elfo("Elfo1");
+            this.esqueleto = new Esqueleto("Esqueleto1");
             Arco arco = new Arco(50);
-            this.elfo.CambiarItemOf(arco);
+            this.esqueleto.CambiarItemOf(arco);
             Armadura armadura = new Armadura(20);
-            this.elfo.CambiarItemDef(armadura);
+            this.esqueleto.CambiarItemDef(armadura);
             this.dummy = new Wizard("Jose");
-        }
-        /*
-            Es necesario probar la asignacion de un valor de vida valido para
-            poder confirmar que el setter funciona correctamente
-        */
-        [Test]
-        public void VidaValidaTest()
-        {
-            this.elfo.Vida= 30;
-            Assert.AreEqual(this.elfo.Vida, 30);
-        }
-        /*
-            Es necesario probar la asignacion de un valor de vida invalido para
-            poder confirmar que el setter funciona correctamente
-        */
-        [Test]
-        public void VidaInvalidaTest()
-        {
-            this.elfo.Vida= -60;
-            Assert.AreEqual(this.elfo.Vida, 0);
         }
         /*
             Es necesario probar este metodo para confirmar que
@@ -47,7 +27,7 @@ namespace Test.Library
         [Test]
         public void GetAtaqueTest()
         {
-            Assert.AreEqual(this.elfo.GetAtaque(), this.elfo.ItemOf.Ataque);
+            Assert.AreEqual(this.esqueleto.GetAtaque(), this.esqueleto.ItemOf.Ataque);
         }
         /*
             Es necesario probar este metodo para confirmar que
@@ -57,8 +37,8 @@ namespace Test.Library
         public void CambiarItemOfTest()
         {
             Arco arcoNue = new Arco(60);
-            this.elfo.CambiarItemOf(arcoNue);
-            Assert.AreEqual(this.elfo.GetAtaque(), arcoNue.Ataque);
+            this.esqueleto.CambiarItemOf(arcoNue);
+            Assert.AreEqual(this.esqueleto.GetAtaque(), arcoNue.Ataque);
         }
         /*
             Es necesario probar este metodo para confirmar que
@@ -67,8 +47,8 @@ namespace Test.Library
         [Test]
         public void QuitarItemOfTest()
         {
-            this.elfo.QuitarItemOf();
-            Assert.AreEqual(this.elfo.ItemOf, null);
+            this.esqueleto.QuitarItemOf();
+            Assert.AreEqual(this.esqueleto.ItemOf, null);
         }
         /*
             Es necesario probar este metodo para confirmar que
@@ -80,7 +60,7 @@ namespace Test.Library
         {
             ItemDefensa tunicaCuero = new TunicaCuero(60);
             this.dummy.CambiarItemDef(tunicaCuero);
-            this.elfo.Atacar(this.dummy);
+            this.esqueleto.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 80);
         }
         /*
@@ -93,7 +73,7 @@ namespace Test.Library
         {
             ItemDefensa tunicaCuero = new TunicaCuero(20);
             this.dummy.CambiarItemDef(tunicaCuero);
-            this.elfo.Atacar(this.dummy);
+            this.esqueleto.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 50);
         }
         /*
@@ -107,9 +87,9 @@ namespace Test.Library
         {
             ItemDefensa tunicaCuero = new TunicaCuero(0);
             this.dummy.CambiarItemDef(tunicaCuero);
-            ItemAtaque mazo2 = new Mazo(80);
-            this.elfo.CambiarItemOf(mazo2);
-            this.elfo.Atacar(this.dummy);
+            ItemAtaque mazo2 = new Mazo(300);
+            this.esqueleto.CambiarItemOf(mazo2);
+            this.esqueleto.Atacar(this.dummy);
             Assert.AreEqual(this.dummy.Vida, 0);
         }
     }

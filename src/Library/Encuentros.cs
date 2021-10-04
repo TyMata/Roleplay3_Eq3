@@ -13,8 +13,8 @@ namespace Roleplay_Prog.Library
             this.heroes = listaHeroes;
             this.enemigos = listaEnemigos;
         }
-
-        public void DoEnconter()
+        
+        public bool DoEnconter()
         {
             int h = 0;
             List<int> eliminados = new List<int>();
@@ -83,6 +83,16 @@ namespace Roleplay_Prog.Library
                      if(enemigo.Vida == 0) enemigos.Remove(enemigo);
                 }
             }
+
+            if (this.enemigos.Count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 

@@ -32,6 +32,7 @@ namespace Roleplay_Prog.Library
 
         protected Enemy(string nombre): base (nombre)
         {
+            
         }
     }
 }
