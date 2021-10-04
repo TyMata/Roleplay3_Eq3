@@ -31,7 +31,7 @@ namespace Test.Library
         [Test]
         public void VidaInvalidaTest()
         {
-            this.rata.Vida= -40;
+            this.Fantasma.Vida= -40;
             Assert.AreEqual(this.Fantasma.Vida, 0);
         }
     }
