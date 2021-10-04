@@ -14,7 +14,7 @@ namespace Roleplay_Prog.Library
             this.enemigos = listaEnemigos;
         }
 
-        public void DoEnconter()
+        public bool DoEnconter()
         {
             int h = 0;
             while (this.enemigos.Count > 0 && this.heroes.Count > 0)
@@ -82,6 +82,16 @@ namespace Roleplay_Prog.Library
                     }
                 }                                   //Termina ataque de los heroes
             }
+
+            if (this.enemigos.Count == 0)
+            {
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
     }
 
