@@ -2,7 +2,7 @@ using System;
 
 namespace Roleplay_Prog.Library
 {
-    public class HeroeNoMagico : Character
+    public abstract class HeroeNoMagico : Character, IHeroes
     {
         public ItemAtaque ItemOf{get;set;}
 
@@ -30,6 +30,7 @@ namespace Roleplay_Prog.Library
             }
         }
 
+        public abstract void Curarse();
         protected HeroeNoMagico(string nombre): base (nombre)
         {
             this.VP = 0;

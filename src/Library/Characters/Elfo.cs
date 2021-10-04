@@ -9,7 +9,7 @@ namespace Roleplay_Prog.Library
             this.Vida = 100;
         }
         
-        public void Curarse()
+        public override void Curarse()
         {
             this.vida = 100;
         }
