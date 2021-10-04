@@ -32,7 +32,7 @@ namespace Test.Library
         public void VidaInvalidaTest()
         {
             this.rata.Vida= -40;
-            Assert.AreEqual(this.rata.Vida, 0);
+            Assert.AreEqual(this.Fantasma.Vida, 0);
         }
     }
 }
